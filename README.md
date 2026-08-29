@@ -4,6 +4,10 @@
 
 本仓库只包含日签应用实现。[Michaelliv/poster](https://github.com/Michaelliv/poster) 作为依赖使用，不包含其源码。该项目在 GitHub 上名为 `poster`，发布到 npm 的包名是 `poster-ai`，安装后提供的 CLI 命令是 `poster`；三者是同一个项目。
 
+## 示例
+
+![电影日签示例](docs/daily-movie-example.png)
+
 ## 安装
 
 ```bash
