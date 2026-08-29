@@ -11,7 +11,7 @@
     "prepare-output": "node -e \"require('node:fs').mkdirSync('output',{recursive:true})\"",
     "build": "npm run prepare-output --silent && poster build src/daily-movie.tsx -o output/daily-movie.html -t 电影日签 --json",
     "export": "npm run prepare-output --silent && poster export src/daily-movie.tsx -o output/daily-movie.png --engine chrome --scale 1 --json",
-    "daily": "npm run generate && npm run build && npm run export"
+    "daily": "node scripts/daily.mjs"
   },
   "dependencies": {
     "poster-ai": "^0.5.0",

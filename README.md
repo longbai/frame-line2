@@ -2,7 +2,7 @@
 
 每日一部电影：从 Hitokoto 影视金句中按日期选句，根据金句的影片出处匹配 TMDB 电影，再使用 `poster-ai` 生成 1080 × 1440 电影日签。
 
-本仓库只包含日签应用实现。[Michaelliv/poster](https://github.com/Michaelliv/poster) 通过 npm 包 `poster-ai` 作为依赖使用，不包含其源码。
+本仓库只包含日签应用实现。[Michaelliv/poster](https://github.com/Michaelliv/poster) 作为依赖使用，不包含其源码。该项目在 GitHub 上名为 `poster`，发布到 npm 的包名是 `poster-ai`，安装后提供的 CLI 命令是 `poster`；三者是同一个项目。
 
 ## 安装
 
@@ -57,18 +57,24 @@ TMDB Token 与 API Key 任选其一；OMDb 用于补充校验导演和年份。
 
 本地 Logo、二维码统一放在 `assets/`。`assets/`、`config.json`、`.env`、生成数据与成品均已忽略，不会进入 Git。
 
-## 生成
+## 一条命令生成
 
-```bash
-npm run generate
-npm run build
-npm run export
-```
-
-或一次完成：
+`scripts/daily.mjs` 在一个 Node.js 进程内完成取金句、匹配电影、写入数据、生成 HTML 和导出 PNG：
 
 ```bash
 npm run daily
+```
+
+指定日期：
+
+```bash
+npm run daily -- --date 2026-08-29
+```
+
+无 API Key 时运行演示：
+
+```bash
+npm run daily -- --demo --date 2026-08-29
 ```
 
 输出：
@@ -76,7 +82,15 @@ npm run daily
 - `output/daily-movie.html`
 - `output/daily-movie.png`
 
-无 API Key 时可运行固定演示：
+## 分步执行
+
+```bash
+npm run generate
+npm run build
+npm run export
+```
+
+仅生成固定演示数据：
 
 ```bash
 npm run demo
