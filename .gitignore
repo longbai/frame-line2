@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.env.*.local
+
+# Local visual configuration and brand assets
+config.json
+assets/
+
+# Generated data and artifacts
+data.json
+output/
+
+.DS_Store
+*.log

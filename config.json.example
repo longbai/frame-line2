@@ -1,0 +1,20 @@
+{
+  "appearance": {
+    "grayBackground": true
+  },
+  "header": {
+    "slogan": "电影的美好"
+  },
+  "brand": {
+    "name": "FRAME/LINE",
+    "tagline": "A FILM FOR EVERY DAY",
+    "logo": "assets/example-cinema-logo.png"
+  },
+  "qr": {
+    "target": "",
+    "image": "",
+    "monochrome": true,
+    "slogan": "此刻，是我们共度的时光",
+    "description": []
+  }
+}
