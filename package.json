@@ -8,9 +8,8 @@
     "generate": "node scripts/generate-daily-movie.mjs",
     "demo": "node scripts/generate-daily-movie.mjs --demo --date 2026-08-29",
     "test": "node --test scripts/generate-daily-movie.test.mjs",
-    "prepare-output": "node -e \"require('node:fs').mkdirSync('output',{recursive:true})\"",
-    "build": "npm run prepare-output --silent && poster build src/daily-movie.tsx -o output/daily-movie.html -t 电影日签 --json",
-    "export": "npm run prepare-output --silent && poster export src/daily-movie.tsx -o output/daily-movie.png --engine chrome --scale 1 --json",
+    "build": "node scripts/render-daily-movie.mjs --html",
+    "export": "node scripts/render-daily-movie.mjs --png",
     "daily": "node scripts/daily.mjs"
   },
   "dependencies": {

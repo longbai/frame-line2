@@ -105,8 +105,17 @@ npm run daily -- --demo --date 2026-08-29
 
 输出：
 
-- `output/daily-movie.html`
-- `output/daily-movie.png`
+- `output/daily-movie-内容日期_生成时间戳.html`
+- `output/daily-movie-内容日期_生成时间戳.png`
+
+例如内容日期为 `2026-08-29`、实际生成时间为上海时间
+`2026-08-30 16:21:34.567` 时，生成：
+
+- `output/daily-movie-2026-08-29_20260830-162134-567.html`
+- `output/daily-movie-2026-08-29_20260830-162134-567.png`
+
+时间戳精确到毫秒；每次运行都会生成新文件，不覆盖已有结果。一键生成的
+HTML 与 PNG 共用同一个时间戳。
 
 ## 分步执行
 

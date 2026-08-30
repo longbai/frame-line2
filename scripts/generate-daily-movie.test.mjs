@@ -7,6 +7,10 @@ import {
   scoreTmdbCandidate,
   selectQuote,
 } from "./generate-daily-movie.mjs";
+import {
+  shanghaiTimestamp,
+  timestampedOutputPaths,
+} from "./render-daily-movie.mjs";
 
 test("normalizes Chinese title punctuation", () => {
   assert.equal(normalizeTitle("《绿皮书》"), "绿皮书");
@@ -38,4 +42,27 @@ test("formats English calendar and Chinese lunar date", () => {
     weekday: "SATURDAY",
     lunar: "丙午年七月十七",
   });
+});
+
+test("formats generation timestamps in Asia/Shanghai", () => {
+  assert.equal(
+    shanghaiTimestamp(new Date("2026-08-30T08:21:34.567Z")),
+    "20260830-162134-567",
+  );
+});
+
+test("adds the content date and generation timestamp to artifact names", () => {
+  const output = timestampedOutputPaths(
+    "2026-08-29",
+    new Date("2026-08-30T08:21:34.567Z"),
+    "/tmp/frame-line-output",
+  );
+  assert.equal(
+    output.html,
+    "/tmp/frame-line-output/daily-movie-2026-08-29_20260830-162134-567.html",
+  );
+  assert.equal(
+    output.png,
+    "/tmp/frame-line-output/daily-movie-2026-08-29_20260830-162134-567.png",
+  );
 });
