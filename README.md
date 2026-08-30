@@ -6,7 +6,7 @@
 
 ## 版式预览
 
-以下展示三种版式；Portrait 同时提供默认品牌与个性化品牌素材效果。
+以下三张效果图均使用默认品牌配置生成。
 
 ### Editorial
 
@@ -27,10 +27,6 @@
 默认品牌效果：
 
 ![Portrait 电影日签效果图](docs/portrait-preview.png)
-
-“未来清晨”Logo、二维码及配套文案效果：
-
-![Portrait 个性化品牌效果图](docs/portrait-branded-preview.png)
 
 ## 安装
 
