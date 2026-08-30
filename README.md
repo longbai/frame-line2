@@ -4,9 +4,21 @@
 
 本仓库只包含日签应用实现。[Michaelliv/poster](https://github.com/Michaelliv/poster) 作为依赖使用，不包含其源码。该项目在 GitHub 上名为 `poster`，发布到 npm 的包名是 `poster-ai`，安装后提供的 CLI 命令是 `poster`；三者是同一个项目。
 
-## 示例
+## 版式预览
 
-![电影日签示例](docs/daily-movie-example.png)
+两张效果图均使用默认品牌、默认矢量 Logo 和自动二维码生成。
+
+### Editorial
+
+`appearance.layout: "editorial"`
+
+![Editorial 电影日签效果图](docs/editorial-preview.png)
+
+### Cinema
+
+`appearance.layout: "cinema"`
+
+![Cinema 电影日签效果图](docs/cinema-preview.png)
 
 ## 安装
 
@@ -33,7 +45,8 @@ TMDB Token 与 API Key 任选其一；OMDb 用于补充校验导演和年份。
 ```json
 {
   "appearance": {
-    "grayBackground": true
+    "grayBackground": true,
+    "layout": "editorial"
   },
   "header": {
     "slogan": "电影的美好"
@@ -41,7 +54,7 @@ TMDB Token 与 API Key 任选其一；OMDb 用于补充校验导演和年份。
   "brand": {
     "name": "FRAME/LINE",
     "tagline": "A FILM FOR EVERY DAY",
-    "logo": "assets/example-cinema-logo.png"
+    "logo": ""
   },
   "qr": {
     "target": "",
@@ -54,6 +67,7 @@ TMDB Token 与 API Key 任选其一；OMDb 用于补充校验导演和年份。
 ```
 
 - `appearance.grayBackground`: `true` 为浅灰背景；`false` 为透明背景。
+- `appearance.layout`: `editorial` 为原有杂志卡片版式；`cinema` 为上图下文的观影版式。
 - `brand.logo`: 本地文件、HTTP(S) URL 或 data URL；文件不存在时使用内置默认 Logo。
 - `qr.target`: 自动生成二维码的内容；为空时使用当天电影的 TMDB 页面。
 - `qr.image`: 直接使用二维码图片；为空时自动生成。

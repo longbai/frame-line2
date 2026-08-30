@@ -1,6 +1,7 @@
 {
   "appearance": {
-    "grayBackground": true
+    "grayBackground": true,
+    "layout": "editorial"
   },
   "header": {
     "slogan": "电影的美好"
@@ -8,7 +9,7 @@
   "brand": {
     "name": "FRAME/LINE",
     "tagline": "A FILM FOR EVERY DAY",
-    "logo": "assets/example-cinema-logo.png"
+    "logo": ""
   },
   "qr": {
     "target": "",
