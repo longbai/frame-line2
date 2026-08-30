@@ -6,7 +6,7 @@
 
 ## 版式预览
 
-两张效果图均使用默认品牌、默认矢量 Logo 和自动二维码生成。
+以下展示三种版式；Portrait 同时提供默认品牌与个性化品牌素材效果。
 
 ### Editorial
 
@@ -19,6 +19,18 @@
 `appearance.layout: "cinema"`
 
 ![Cinema 电影日签效果图](docs/cinema-preview.png)
+
+### Portrait
+
+`appearance.layout: "portrait"`
+
+默认品牌效果：
+
+![Portrait 电影日签效果图](docs/portrait-preview.png)
+
+“未来清晨”Logo、二维码及配套文案效果：
+
+![Portrait 个性化品牌效果图](docs/portrait-branded-preview.png)
 
 ## 安装
 
@@ -67,7 +79,7 @@ TMDB Token 与 API Key 任选其一；OMDb 用于补充校验导演和年份。
 ```
 
 - `appearance.grayBackground`: `true` 为浅灰背景；`false` 为透明背景。
-- `appearance.layout`: `editorial` 为原有杂志卡片版式；`cinema` 为上图下文的观影版式。
+- `appearance.layout`: `editorial` 为原有杂志卡片版式；`cinema` 为上图下文的观影版式；`portrait` 为满版竖图与反白浮层文字版式。
 - `brand.logo`: 本地文件、HTTP(S) URL 或 data URL；文件不存在时使用内置默认 Logo。
 - `qr.target`: 自动生成二维码的内容；为空时使用当天电影的 TMDB 页面。
 - `qr.image`: 直接使用二维码图片；为空时自动生成。

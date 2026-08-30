@@ -66,6 +66,29 @@ function QrCode({ size = 126 }: { size?: number }) {
   );
 }
 
+function OverlayBrandMark() {
+  if (data.brand.logoUrl) {
+    return (
+      <img
+        src={data.brand.logoUrl}
+        alt={data.brand.name || "Logo"}
+        className="block w-[112px] h-[74px] object-contain object-right"
+      />
+    );
+  }
+
+  return (
+    <div className="text-right drop-shadow-[0_2px_10px_rgba(0,0,0,.55)]">
+      <div className="text-[18px] font-extrabold tracking-[-0.035em] text-white">
+        {data.brand.name}
+      </div>
+      <div className="mt-2 text-[8px] font-semibold tracking-[0.24em] text-white/58">
+        {data.brand.tagline}
+      </div>
+    </div>
+  );
+}
+
 function EditorialLayout() {
   return (
     <main
@@ -253,6 +276,100 @@ function CinemaLayout() {
   );
 }
 
+function PortraitLayout() {
+  return (
+    <main
+      className="relative w-[960px] h-[1320px] overflow-hidden bg-[#111311] text-white"
+      style={{
+        borderRadius: 18,
+        boxShadow:
+          "0 28px 70px rgba(18, 17, 14, 0.22), 0 4px 14px rgba(18, 17, 14, 0.10)",
+      }}
+    >
+      <img
+        src={data.movie.stillUrl}
+        alt={`${data.movie.title}电影剧照`}
+        className="absolute inset-0 block w-full h-full object-cover"
+        style={{ filter: "saturate(.86) contrast(1.05) brightness(.9)" }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(7,8,7,.48) 0%, rgba(7,8,7,.04) 25%, rgba(7,8,7,.08) 48%, rgba(7,8,7,.9) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(5,6,5,.2) 0%, rgba(5,6,5,0) 48%, rgba(5,6,5,.12) 100%)",
+        }}
+      />
+
+      <header className="absolute top-[58px] left-[58px] right-[58px] flex items-start justify-between">
+        <div className="flex items-start gap-5 drop-shadow-[0_2px_12px_rgba(0,0,0,.45)]">
+          <div className="text-[112px] font-light leading-[0.82] tracking-[-0.075em] tabular-nums">
+            {data.date.day}
+          </div>
+          <div className="pt-1 border-l border-white/55 pl-5">
+            <div className="text-[15px] font-bold tracking-[0.22em]">
+              {data.date.month}
+            </div>
+            <div className="mt-3 text-[12px] font-semibold tracking-[0.16em] text-white/78">
+              {data.date.weekday}
+            </div>
+            <div className="mt-3 max-w-[190px] text-[12px] leading-[1.5] tracking-[0.04em] text-white/68">
+              农历 {data.date.lunar}
+            </div>
+          </div>
+        </div>
+        <div className="pt-1 text-[11px] font-semibold tracking-[0.32em] text-white/72 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,.5)]">
+          {data.header.slogan}
+        </div>
+      </header>
+
+      <section className="absolute left-[58px] right-[58px] bottom-[210px] drop-shadow-[0_2px_14px_rgba(0,0,0,.55)]">
+        <blockquote className="m-0 max-w-[815px]">
+          <p
+            className="m-0 text-[32px] leading-[1.58] font-semibold tracking-[-0.025em] text-white"
+            style={{ fontFamily: serif }}
+          >
+            “{data.quote.text}”
+          </p>
+          {data.quote.speaker ? (
+            <footer className="mt-3 text-[12px] font-medium tracking-[0.12em] text-white/68">
+              -- {data.quote.speaker}
+            </footer>
+          ) : null}
+        </blockquote>
+      </section>
+
+      <footer className="absolute left-[58px] right-[58px] bottom-[46px] pt-[24px] flex items-end justify-between gap-8 border-t border-white/35 drop-shadow-[0_2px_12px_rgba(0,0,0,.5)]">
+        <div className="min-w-0 pb-2">
+          <h1 className="m-0 text-[37px] font-bold leading-none tracking-[-0.04em] truncate">
+            《{data.movie.title}》
+          </h1>
+          <div className="mt-4 text-[14px] font-medium tracking-[0.06em] text-white/72">
+            {data.movie.year} · 导演 {data.movie.director}
+          </div>
+        </div>
+        <div className="shrink-0 flex flex-col items-end gap-3 text-right">
+          <div className="flex items-center gap-4">
+            <OverlayBrandMark />
+            <QrCode size={96} />
+          </div>
+          {data.qr.slogan ? (
+            <div className="text-[10px] font-semibold tracking-[0.12em] text-white/72">
+              {data.qr.slogan}
+            </div>
+          ) : null}
+        </div>
+      </footer>
+    </main>
+  );
+}
+
 export default function DailyMoviePoster() {
   const layout = (data.appearance as { layout?: string }).layout;
 
@@ -277,7 +394,13 @@ export default function DailyMoviePoster() {
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600;700&display=swap"
       />
 
-      {layout === "cinema" ? <CinemaLayout /> : <EditorialLayout />}
+      {layout === "cinema" ? (
+        <CinemaLayout />
+      ) : layout === "portrait" ? (
+        <PortraitLayout />
+      ) : (
+        <EditorialLayout />
+      )}
     </div>
   );
 }

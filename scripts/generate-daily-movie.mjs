@@ -375,7 +375,11 @@ export async function generate(options) {
   return {
     appearance: {
       grayBackground: appearanceConfig.grayBackground !== false,
-      layout: appearanceConfig.layout === "cinema" ? "cinema" : "editorial",
+      layout:
+        appearanceConfig.layout === "cinema" ||
+        appearanceConfig.layout === "portrait"
+          ? appearanceConfig.layout
+          : "editorial",
     },
     header: {
       slogan: headerConfig.slogan ?? "A FILM FOR EVERY DAY",
